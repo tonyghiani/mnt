@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "ignoreDeprecations": "5.0",
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "stripInternal": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "ES2022",
+    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "baseUrl": ".",
+    "rootDir": "",
+    "paths": {
+      "react-mnt": ["packages/react-mnt/src"],
+      "react-mnt/*": ["packages/react-mnt/*"],
+      "react-props-check": ["packages/react-props-check/src"],
+      "react-props-check/*": ["packages/react-props-check/*"],
+    }
+  },
+  "include": ["packages/**/*"],
+  "exclude": ["node_modules", "packages/*/node_modules", "dist", ".vscode", ".husky"]
+}
