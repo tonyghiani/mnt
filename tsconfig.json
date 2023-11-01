@@ -1,7 +1,4 @@
 {
   "files": [],
-  "references": [
-    { "path": "./packages/react-mnt" },
-    { "path": "./packages/react-props-check" }
-  ]
+  "references": [{ "path": "./packages/react-mnt" }, { "path": "./packages/react-props-check" }]
 }
