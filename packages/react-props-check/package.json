@@ -1,0 +1,51 @@
+{
+  "name": "react-props-check",
+  "version": "0.0.0",
+  "description": "Validate React properties to keep the DOM semantic.",
+  "keywords": [
+    "attributes",
+    "components",
+    "properties",
+    "react component",
+    "react",
+    "typescript"
+  ],
+  "homepage": "https://github.com/tonyghiani/mnt/tree/main/packages/react-props-check#readme",
+  "repository": "https://github.com/tonyghiani/mnt",
+  "license": "MIT",
+  "author": "Marco Antonio Ghiani <marcoantonio.ghiani01@gmail.com>",
+  "sideEffects": false,
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean:build && yarn build:vite && yarn build:types",
+    "build:types": "tsc --project ./tsconfig.types.json",
+    "build:vite": "vite build",
+    "clean:build": "rimraf dist *.tsbuildinfo",
+    "commit": "git cz",
+    "lint": "eslint",
+    "lint:package": "sort-package-json",
+    "release": "semantic-release",
+    "test": "NODE_ENV=testing jest --passWithNoTests"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
