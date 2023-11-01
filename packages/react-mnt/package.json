@@ -1,0 +1,58 @@
+{
+  "name": "react-mnt",
+  "version": "0.0.0",
+  "description": "Create strongly typed React components, including essential features such as polymorphism and ref handling.",
+  "keywords": [
+    "components",
+    "css",
+    "mnt",
+    "react component",
+    "react",
+    "styles",
+    "typescript"
+  ],
+  "homepage": "https://github.com/tonyghiani/mnt/tree/main/packages/react-mnt#readme",
+  "repository": "https://github.com/tonyghiani/mnt",
+  "license": "MIT",
+  "author": "Marco Antonio Ghiani <marcoantonio.ghiani01@gmail.com>",
+  "sideEffects": false,
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean:build && yarn build:vite && yarn build:types",
+    "build:types": "tsc --project ./tsconfig.types.json",
+    "build:vite": "vite build",
+    "clean:build": "rimraf dist *.tsbuildinfo",
+    "commit": "git cz",
+    "lint": "eslint",
+    "lint:package": "sort-package-json",
+    "release": "semantic-release",
+    "test": "NODE_ENV=testing jest --passWithNoTests"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "dependencies": {
+    "react-props-check": "0.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
