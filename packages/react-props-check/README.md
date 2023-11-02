@@ -5,8 +5,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" />
   </a>
   <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/actions/workflow/status/tonyghiani/mnt/release.yml?style=for-the-badge&logo=github
-" />
+    <img alt="CI Build" src="https://img.shields.io/github/actions/workflow/status/tonyghiani/mnt/release.yml?style=for-the-badge&logo=github" />
   </a>
 </p>
 
