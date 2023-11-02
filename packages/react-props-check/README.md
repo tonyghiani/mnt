@@ -1,7 +1,14 @@
 # react-props-check
 
-[![CI Status](https://img.shields.io/github/workflow/status/tonyghiani/react-props-check/CI)](https://github.com/tonyghiani/react-props-check/actions)
-[![MIT License](https://img.shields.io/github/license/tonyghiani/react-props-check)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <a href="https://github.com/tonyghiani/mnt/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" />
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/actions/workflow/status/tonyghiani/mnt/release.yml?style=for-the-badge&logo=github
+" />
+  </a>
+</p>
 
 `react-props-check` is a lightweight utility library designed to simplify prop validation in React applications. When working with React components, it's essential to ensure that your components receive the correct props to prevent unexpected issues during runtime. This package streamlines the process of validating React component props, helping you maintain code quality and reliability.
 
