@@ -20,28 +20,28 @@ export type ParamsTarget<
     : TDefault
   : TDefault;
 
-export interface Mnt<Target extends MntComponentType, TargetHtmlProps extends object> {
+export interface Mnt<TElement extends MntComponentType, TElementHtmlProps extends object> {
   <Props extends object = BaseObject>(
-    ..._taggedStyle: TaggedStyle<Merge<TargetHtmlProps, Props>>
-  ): MntComponent<Target, Merge<TargetHtmlProps, Props>>;
+    ..._taggedStyle: TaggedStyle<Merge<TElementHtmlProps, Props>>
+  ): MntComponent<TElement, Merge<TElementHtmlProps, Props>>;
 
   params<
     Props extends object = BaseObject,
-    _MergedProps extends object = Merge<TargetHtmlProps, Props>,
+    _MergedProps extends object = Merge<TElementHtmlProps, Props>,
     _ParamsArg extends MntParamsOrFactory<_MergedProps> = MntParamsOrFactory<_MergedProps>,
-    _ResolvedTarget extends MntComponentType = ParamsTarget<_ParamsArg, Target>
+    _ResolvedElement extends MntComponentType = ParamsTarget<_ParamsArg, TElement>
   >(
     _paramsFactory: _ParamsArg
   ): Mnt<
-    _ResolvedTarget,
-    _ResolvedTarget extends MntComponentType
-      ? Merge<React.ComponentPropsWithRef<_ResolvedTarget>, Props>
+    _ResolvedElement,
+    _ResolvedElement extends MntComponentType
+      ? Merge<React.ComponentPropsWithRef<_ResolvedElement>, Props>
       : _MergedProps
   >;
 }
 
 export interface MntComponent<
-  Target extends MntComponentType = any,
+  TElement extends MntComponentType = any,
   Props extends object = BaseObject
 > extends React.ForwardRefExoticComponent<
     React.PropsWithoutRef<Props> & React.RefAttributes<unknown>
@@ -50,7 +50,7 @@ export interface MntComponent<
 
   _classesFactory: ClassesFactory<Props>;
   _paramsFactory: MntParamsFactory<Props>;
-  _elementType: Target;
+  _element: TElement;
   _isMnt: boolean;
 }
 
@@ -93,32 +93,32 @@ const isMnt = (arg: MntComponentType): arg is MntComponent => (arg as MntCompone
  * const Button = mnt(BaseTypography).params((props) => ({as: props.variant}))`text-blue ${props => props.disabled && text-disabled}`;
  */
 const mnt = <
-  Target extends MntComponentType,
-  TargetHtmlProps extends object = Target extends MntComponentType
-    ? React.ComponentPropsWithRef<Target>
+  TElement extends MntComponentType,
+  TElementHtmlProps extends object = TElement extends MntComponentType
+    ? React.ComponentPropsWithRef<TElement>
     : BaseObject
 >(
-  elementType: Target,
+  element: TElement,
   params: MntParamsOrFactory<BaseObject> = {}
-): Mnt<Target, TargetHtmlProps> => {
+): Mnt<TElement, TElementHtmlProps> => {
   const builder = <Props extends object = BaseObject>(
-    ...taggedStyles: TaggedStyle<Merge<TargetHtmlProps, Props>>
+    ...taggedStyles: TaggedStyle<Merge<TElementHtmlProps, Props>>
   ) => {
     const classesFactory = getClasses(...taggedStyles);
     const paramsFactory = isFunction(params) ? params : () => params;
 
-    if (isMnt(elementType)) {
-      return mnt(elementType._elementType, props => ({
-        ...elementType._paramsFactory(props),
+    if (isMnt(element)) {
+      return mnt(element._element, props => ({
+        ...element._paramsFactory(props),
         ...paramsFactory(props)
       }))<Props>`
-          ${props => elementType._classesFactory(props)}
+          ${props => element._classesFactory(props)}
           ${props => classesFactory(props)}
         `;
     }
 
-    return componentTemplate<Target, Merge<TargetHtmlProps, Props>>(
-      elementType,
+    return componentTemplate<TElement, Merge<TElementHtmlProps, Props>>(
+      element,
       classesFactory,
       paramsFactory
     );
@@ -126,18 +126,18 @@ const mnt = <
 
   builder.params = <
     Props extends object = BaseObject,
-    _MergedProps extends object = Merge<TargetHtmlProps, Props>,
+    _MergedProps extends object = Merge<TElementHtmlProps, Props>,
     _ParamsArg extends MntParamsOrFactory<_MergedProps> = MntParamsOrFactory<_MergedProps>,
-    _ResolvedTarget extends MntComponentType = ParamsTarget<_ParamsArg, Target>
+    _ResolvedElement extends MntComponentType = ParamsTarget<_ParamsArg, TElement>
   >(
     params: _ParamsArg
   ) => {
     return mnt<
-      _ResolvedTarget,
-      _ResolvedTarget extends MntComponentType
-        ? Merge<Merge<TargetHtmlProps, React.ComponentPropsWithRef<_ResolvedTarget>>, Props>
+      _ResolvedElement,
+      _ResolvedElement extends MntComponentType
+        ? Merge<Merge<TElementHtmlProps, React.ComponentPropsWithRef<_ResolvedElement>>, Props>
         : _MergedProps
-    >(elementType as unknown as _ResolvedTarget, params);
+    >(element as unknown as _ResolvedElement, params);
   };
 
   return builder;
@@ -145,14 +145,14 @@ const mnt = <
 
 export default mnt;
 
-const componentTemplate = <Target extends MntComponentType, Props extends object>(
-  elementType: Target,
+const componentTemplate = <TElement extends MntComponentType, Props extends object>(
+  element: TElement,
   classesFactory: ClassesFactory<Props>,
   paramsFactory: MntParamsFactory<Props>
 ) => {
   function Component<TAs extends MntComponentType>(
     componentProps: MntComponentProps<TAs, Props>,
-    ref: ForwardedRef<MntComponentType extends TAs ? Target : TAs>
+    ref: ForwardedRef<MntComponentType extends TAs ? TElement : TAs>
   ) {
     const { as: As, className, ...props } = componentProps;
 
@@ -165,19 +165,19 @@ const componentTemplate = <Target extends MntComponentType, Props extends object
     const cleanedParams = cleanProps(paramsRest);
     const cleanedProps = cleanProps(props);
 
-    const TagName = As ?? paramsAs ?? elementType;
+    const TagName = As ?? paramsAs ?? element;
     return <TagName {...cleanedParams} {...cleanedProps} ref={ref} className={classes} />;
   }
 
-  if (hasStaticProperty(elementType, 'displayName')) {
-    Component.displayName = elementType.displayName || elementType.name;
+  if (hasStaticProperty(element, 'displayName')) {
+    Component.displayName = element.displayName || element.name;
   }
 
-  const MntComponent = React.forwardRef(Component) as MntComponent<Target, Props>;
+  const MntComponent = React.forwardRef(Component) as MntComponent<TElement, Props>;
 
   MntComponent._classesFactory = classesFactory;
   MntComponent._paramsFactory = paramsFactory;
-  MntComponent._elementType = elementType;
+  MntComponent._element = element;
   MntComponent._isMnt = true;
 
   return MntComponent;
