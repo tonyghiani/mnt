@@ -18,7 +18,7 @@ describe('mnt', () => {
 
   it('should create a polymorphic component that accept a "as" property', () => {
     const Button = mnt('button')``;
-    render(<Button as="ul">mnt</Button>);
+    render(<Button as='ul'>mnt</Button>);
     const component = screen.getByRole('list');
 
     expect(component.tagName).toBe('UL');
@@ -26,7 +26,7 @@ describe('mnt', () => {
 
   it('should create a component that accept and forward a ref of the DOM node', () => {
     const Button = mnt('button')``;
-    const ref = React.createRef<HTMLButtonElement>()
+    const ref = React.createRef<HTMLButtonElement>();
     render(<Button ref={ref}>mnt</Button>);
     const component = ref.current;
 
@@ -35,20 +35,20 @@ describe('mnt', () => {
 
   it('should render the component node with priority to "as" => "config.as" => "base element"', () => {
     const Button = mnt('button')``;
-    const ButtonLink = mnt('button').attrs({ as: 'a' })``;
+    const ButtonLink = mnt('button').params({ as: 'a' })``;
 
     // "as" takes priority
-    const { rerender } = render(<ButtonLink as="ul">mnt</ButtonLink>);
+    const { rerender } = render(<ButtonLink as='ul'>mnt</ButtonLink>);
     const componentList = screen.getByRole('list');
     expect(componentList.tagName).toBe('UL');
 
-    // 'attrs.as' takes priority
-    rerender(<ButtonLink role="link">mnt</ButtonLink>)
+    // 'params.as' takes priority
+    rerender(<ButtonLink role='link'>mnt</ButtonLink>);
     const componentLink = screen.getByRole('link');
     expect(componentLink.tagName).toBe('A');
 
     // base element takes priority
-    render(<Button>mnt</Button>)
+    render(<Button>mnt</Button>);
     const component = screen.getByRole('button');
     expect(component.tagName).toBe('BUTTON');
   });
@@ -63,7 +63,7 @@ describe('mnt', () => {
     });
 
     it('should interpolate a function that provides the component properties', () => {
-      const Button = mnt('button') <ButtonProps>`
+      const Button = mnt('button')<ButtonProps>`
         ${props => (props.variant === 'button' ? 'btn-color' : 'link-color')}
       `;
       const { rerender } = render(<Button variant='button'>mnt</Button>);
@@ -76,7 +76,7 @@ describe('mnt', () => {
     });
 
     it('should respect the order for classes and interpolations', () => {
-      const Button = mnt('button') <ButtonProps>`
+      const Button = mnt('button')<ButtonProps>`
         btn-before
         ${props => (props.variant === 'button' ? 'btn-color' : 'link-color')}
         btn-after
@@ -91,9 +91,9 @@ describe('mnt', () => {
     });
   });
 
-  describe('attrs', () => {
+  describe('params', () => {
     it('should accept an object of default attributes/properties', () => {
-      const Button = mnt('button').attrs({ id: 'test-id' })``;
+      const Button = mnt('button').params({ id: 'test-id' })``;
       render(<Button>mnt</Button>);
       const component = screen.getByRole('button');
 
@@ -101,7 +101,7 @@ describe('mnt', () => {
     });
 
     it('should accept a a function that provides the component properties', () => {
-      const Button = mnt('button').attrs<ButtonProps>(props => ({
+      const Button = mnt('button').params<ButtonProps>(props => ({
         id: props.variant === 'button' ? 'test-btn' : 'test-link'
       }))``;
       const { rerender } = render(<Button variant='button'>mnt</Button>);
@@ -116,7 +116,9 @@ describe('mnt', () => {
 
   describe('extends existing components', () => {
     it('should take a function component and extend its style and configuration', () => {
-      const Button = (props: React.ComponentProps<'button'>) => <button id="base-button" {...props} />
+      const Button = (props: React.ComponentProps<'button'>) => (
+        <button id='base-button' {...props} />
+      );
       const StyledButton = mnt(Button)`btn-color`;
       render(<StyledButton>mnt</StyledButton>);
       const component = screen.getByRole('button');
@@ -126,7 +128,7 @@ describe('mnt', () => {
     });
 
     it('should take a MntComponent and extend its style and configuration', () => {
-      const Button = mnt('button').attrs({ id: 'base-button' })``
+      const Button = mnt('button').params({ id: 'base-button' })``;
       const StyledButton = mnt(Button)`btn-color`;
       render(<StyledButton>mnt</StyledButton>);
       const component = screen.getByRole('button');
@@ -134,27 +136,27 @@ describe('mnt', () => {
       expect(component.id).toBe('base-button');
       expect(component.className).toBe('btn-color');
     });
-  })
+  });
 
   describe('typing', () => {
     it('should accept properties exclusively for the rendered DOM node', () => {
-      const Button = mnt('button') <ButtonProps>``;
+      const Button = mnt('button')<ButtonProps>``;
       const Text = mnt('label')``;
 
       //@ts-expect-error
-      const button = <Button href="" />
-      const buttonAsLink = <Button as="a" href="" />
+      const button = <Button href='' />;
+      const buttonAsLink = <Button as='a' href='' />;
       //@ts-expect-error
-      const buttonWithWrongVariant = <Button variant="unexpected-value" />
-      const buttonWithVariant = <Button variant="link" />
+      const buttonWithWrongVariant = <Button variant='unexpected-value' />;
+      const buttonWithVariant = <Button variant='link' />;
 
-      const textAttrLabel = <Text as="a" href='test-id' />
+      const textAttrLabel = <Text as='a' href='test-id' />;
 
-      expect(button).toBeTruthy()
-      expect(buttonAsLink).toBeTruthy()
-      expect(buttonWithWrongVariant).toBeTruthy()
-      expect(buttonWithVariant).toBeTruthy()
-      expect(textAttrLabel).toBeTruthy()
+      expect(button).toBeTruthy();
+      expect(buttonAsLink).toBeTruthy();
+      expect(buttonWithWrongVariant).toBeTruthy();
+      expect(buttonWithVariant).toBeTruthy();
+      expect(textAttrLabel).toBeTruthy();
     });
-  })
+  });
 });
