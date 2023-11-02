@@ -1,6 +1,6 @@
 import { ReactAcceptedProp, reactAcceptedPropertiesSet } from './react_props';
 
-type DataAttribute = `data-${string}`;
+export type DataAttribute = `data-${string}`;
 
 function isValidProp(property: ReactAcceptedProp | DataAttribute) {
   return reactAcceptedPropertiesSet.has(property) || isDataAttribute(property);

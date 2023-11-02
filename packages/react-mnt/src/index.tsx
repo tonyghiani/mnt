@@ -1,5 +1,5 @@
 import React, { ElementType, ForwardedRef } from 'react';
-import isValidProp, { type ReactAcceptedProp } from 'react-props-check'
+import isValidProp, { type ReactAcceptedProp } from 'react-props-check';
 
 export interface MntProps {
   as?: MntComponentType;
@@ -65,7 +65,10 @@ export type MntConfigOrFactory<Props extends object = BaseObject> =
 export type ClassesFactory<Props extends object> = (_props: Assign<Props, MntProps>) => string;
 export type ClassesFactoryOrString<Props extends object> = ClassesFactory<Props> | string;
 
-export type TaggedStyle<Props extends object> = [TemplateStringsArray, ...ClassesFactoryOrString<Props>[]];
+export type TaggedStyle<Props extends object> = [
+  TemplateStringsArray,
+  ...ClassesFactoryOrString<Props>[]
+];
 
 export type MntComponentType = ElementType | MntComponent;
 
@@ -157,7 +160,7 @@ const componentTemplate = <Target extends MntComponentType, Props extends object
   ) {
     const { as: As, className, ...props } = componentProps;
 
-    const config = configFactory(componentProps as Props)
+    const config = configFactory(componentProps as Props);
     const { as: configAs, ...configRest } = config;
     const taggedClasses = classesFactory({ ...config, ...componentProps } as Props);
 
@@ -184,7 +187,9 @@ const componentTemplate = <Target extends MntComponentType, Props extends object
   return MntComponent;
 };
 
-function getClasses<Props extends object = BaseObject>(...taggedStyles: TaggedStyle<Props>): ClassesFactory<Props> {
+function getClasses<Props extends object = BaseObject>(
+  ...taggedStyles: TaggedStyle<Props>
+): ClassesFactory<Props> {
   return props => {
     const [statics, ...dynamics] = taggedStyles;
     const chunks = [];

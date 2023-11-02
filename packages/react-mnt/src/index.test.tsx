@@ -33,7 +33,7 @@ describe('mnt', () => {
     expect(component.tagName).toBe('BUTTON');
   });
 
-  it('should render the component node wiht priority to "as" => "config.as" => "base element"', () => {
+  it('should render the component node with priority to "as" => "config.as" => "base element"', () => {
     const Button = mnt('button')``;
     const ButtonLink = mnt('button').attrs({ as: 'a' })``;
 

@@ -1,6 +1,10 @@
 <h1 align="center">Mnt</h1>
 
 <p align="center">
+  <img width="200" src="./assets/mnt_logo.svg" alt="mnt">
+</p>
+
+<p align="center">
   <a href="https://github.com/tonyghiani/mnt/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" />
   </a>
