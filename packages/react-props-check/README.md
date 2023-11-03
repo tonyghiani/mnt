@@ -61,6 +61,4 @@ import { ReactAcceptedProp } from 'react-props-check';
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details. You are free to use and distribute this package under the terms of the MIT License.
-
-For more information and advanced usage, please refer to the [official documentation](https://github.com/tonyghiani/react-props-check).
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/tonyghiani/mnt/blob/main/LICENSE) file for details. You are free to use and distribute this package under the terms of the MIT License.

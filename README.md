@@ -1,7 +1,7 @@
 <h1 align="center">Mnt</h1>
 
 <p align="center">
-  <img width="200" src="./assets/mnt_logo.svg" alt="mnt">
+  <img width="300" src="./assets/mnt_logo_wide.svg" alt="mnt">
 </p>
 
 <p align="center">
