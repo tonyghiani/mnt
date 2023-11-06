@@ -37,14 +37,6 @@
       "path": "git-cz"
     }
   },
-  "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17"
-  },
   "publishConfig": {
     "access": "public"
   }
