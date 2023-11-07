@@ -1,6 +1,6 @@
 {
   "name": "react-mnt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create strongly typed React components, including essential features such as polymorphism and ref handling.",
   "keywords": [
     "components",
