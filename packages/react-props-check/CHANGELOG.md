@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/tonyghiani/mnt/compare/react-props-check@1.0.0...react-props-check@1.1.0) (2023-11-07)
+
+### Features
+
+- **root:** 🎸 bump version ([ee0967d](https://github.com/tonyghiani/mnt/commit/ee0967dd4756d2926bf5beef93b583b732123ab5))
+
 # 1.0.0 (2023-11-07)
 
 ### Features
