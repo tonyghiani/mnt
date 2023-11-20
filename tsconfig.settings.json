@@ -27,7 +27,7 @@
       "react-mnt": ["packages/react-mnt/src"],
       "react-mnt/*": ["packages/react-mnt/*"],
       "react-props-check": ["packages/react-props-check/src"],
-      "react-props-check/*": ["packages/react-props-check/*"],
+      "react-props-check/*": ["packages/react-props-check/*"]
     }
   },
   "include": ["packages/**/*"],

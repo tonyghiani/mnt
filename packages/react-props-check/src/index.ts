@@ -1,5 +1,6 @@
 import { ReactAcceptedProp, reactAcceptedPropertiesSet } from './react_props';
 
+export type { ReactAcceptedProp } from './react_props';
 export type DataAttribute = `data-${string}`;
 
 function isValidProp(property: ReactAcceptedProp | DataAttribute) {
@@ -7,7 +8,6 @@ function isValidProp(property: ReactAcceptedProp | DataAttribute) {
 }
 
 export default isValidProp;
-export * from './react_props';
 
 /**********************/
 

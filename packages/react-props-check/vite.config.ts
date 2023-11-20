@@ -28,7 +28,10 @@ export default defineConfig(() => ({
           preserveModulesRoot: 'src'
         }
       ],
-      external: ['react/jsx-runtime']
+      external: [
+        /^node:.*/, // don't bundle built-in Node.js modules (use protocol imports!),
+        'react/jsx-runtime'
+      ]
     }
   }
 }));

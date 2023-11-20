@@ -183,7 +183,7 @@ const componentTemplate = <TElement extends MntComponentType, Props extends obje
   return MntComponent;
 };
 
-function getClasses<Props extends object = BaseObject>(
+export function getClasses<Props extends object = BaseObject>(
   ...taggedStyles: TaggedStyle<Props>
 ): ClassesFactory<Props> {
   return props => {
