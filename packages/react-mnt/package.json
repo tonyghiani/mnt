@@ -43,7 +43,8 @@
     "lint": "eslint",
     "lint:package": "sort-package-json",
     "release": "semantic-release",
-    "test": "NODE_ENV=testing jest --passWithNoTests"
+    "test": "NODE_ENV=testing jest --passWithNoTests",
+    "update:deps": "ncu -u"
   },
   "config": {
     "commitizen": {
