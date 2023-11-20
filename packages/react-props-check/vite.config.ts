@@ -6,9 +6,6 @@ import viteTsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => ({
   plugins: [react(), macrosPlugin(), viteTsconfigPaths()],
-  define: {
-    'process.env': {}
-  },
   build: {
     minify: false,
     lib: {
