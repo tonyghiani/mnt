@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.3...react-mnt@1.1.4) (2023-11-23)
+
+### Bug Fixes
+
+- **react-mnt:** 🐛 update component type ([05fa0e8](https://github.com/tonyghiani/mnt/commit/05fa0e8b1b00e1fe0c3dfdf34f1e814c522d7b23))
+
 ## [1.1.3](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.2...react-mnt@1.1.3) (2023-11-22)
 
 **Note:** Version bump only for package react-mnt
