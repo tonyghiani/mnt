@@ -46,7 +46,7 @@ export interface MntComponent<
 > extends React.ForwardRefExoticComponent<
     React.PropsWithoutRef<Props> & React.RefAttributes<unknown>
   > {
-  <TAs extends MntComponentType>(_props: MntComponentProps<TAs, Props>): React.ReactNode;
+  <TAs extends MntComponentType>(_props: MntComponentProps<TAs, Props>): JSX.Element;
 
   _classesFactory: ClassesFactory<Props>;
   _paramsFactory: MntParamsFactory<Props>;
