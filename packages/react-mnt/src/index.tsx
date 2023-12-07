@@ -1,3 +1,5 @@
+import './css';
+
 import React, { ElementType, ForwardedRef } from 'react';
 import isValidProp, { type ReactAcceptedProp } from 'react-props-check';
 

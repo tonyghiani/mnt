@@ -150,7 +150,7 @@ describe('mnt', () => {
       const buttonWithWrongVariant = <Button variant='unexpected-value' />;
       const buttonWithVariant = <Button variant='link' />;
 
-      const textAttrLabel = <Text as='a' href='test-id' />;
+      const textAttrLabel = <Text as='a' href='test-id' style={{ '--rotation': '255%' }} />;
 
       expect(button).toBeTruthy();
       expect(buttonAsLink).toBeTruthy();
