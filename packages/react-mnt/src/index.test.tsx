@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom';
+
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
@@ -22,6 +24,26 @@ describe('mnt', () => {
     const component = screen.getByRole('list');
 
     expect(component.tagName).toBe('UL');
+  });
+
+  it('should forward custom properties to the component passed to "as" property', () => {
+    const Button = mnt('button')``;
+
+    const Link = ({ external = false, ...props }) => {
+      const externalProps = {
+        target: '_blank'
+      };
+
+      return <a href='/' {...(external && externalProps)} {...props} />;
+    };
+
+    render(
+      <Button as={Link} external>
+        mnt
+      </Button>
+    );
+
+    expect(screen.getByRole('link')).toHaveAttribute('target', '_blank');
   });
 
   it('should create a component that accept and forward a ref of the DOM node', () => {

@@ -13,14 +13,12 @@ export type ParamsResult<Params extends MntParamsOrFactory> = Params extends Any
   ? ReturnType<AnyFunction>
   : Params;
 
-export type ParamsTarget<
-  Params extends MntParamsOrFactory,
-  TDefault extends MntComponentType
-> = ParamsResult<Params> extends { as: infer PAs }
-  ? PAs extends MntComponentType
-    ? PAs
-    : TDefault
-  : TDefault;
+export type ParamsTarget<Params extends MntParamsOrFactory, TDefault extends MntComponentType> =
+  ParamsResult<Params> extends { as: infer PAs }
+    ? PAs extends MntComponentType
+      ? PAs
+      : TDefault
+    : TDefault;
 
 export interface Mnt<TElement extends MntComponentType, TElementHtmlProps extends object> {
   <Props extends object = BaseObject>(
@@ -168,7 +166,13 @@ const componentTemplate = <TElement extends MntComponentType, Props extends obje
     const cleanedProps = cleanProps(props);
 
     const TagName = As ?? paramsAs ?? element;
-    return <TagName {...cleanedParams} {...cleanedProps} ref={ref} className={classes} />;
+
+    const properties =
+      typeof TagName === 'string'
+        ? { ...cleanedParams, ...cleanedProps }
+        : { ...paramsRest, ...props };
+
+    return <TagName {...properties} ref={ref} className={classes} />;
   }
 
   if (hasStaticProperty(element, 'displayName')) {
