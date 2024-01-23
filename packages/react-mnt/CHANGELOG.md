@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.6...react-mnt@1.1.7) (2024-01-23)
+
+### Bug Fixes
+
+- **react-mnt:** 🐛 add "as" to base properties ([776f74d](https://github.com/tonyghiani/mnt/commit/776f74d8ad0e33e477e17bc7f9478bfb1e726fc5))
+
 ## [1.1.6](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.5...react-mnt@1.1.6) (2024-01-19)
 
 ### Bug Fixes
