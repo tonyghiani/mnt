@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.7...react-mnt@1.1.8) (2024-01-24)
+
+### Bug Fixes
+
+- **react-mnt:** 🐛 add missing ref to types ([562643d](https://github.com/tonyghiani/mnt/commit/562643dd429a5c4472bf81bb6d5d40aadad67b8c))
+
 ## [1.1.7](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.6...react-mnt@1.1.7) (2024-01-23)
 
 ### Bug Fixes
