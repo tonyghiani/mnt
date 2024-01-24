@@ -163,7 +163,10 @@ describe('mnt', () => {
   describe('typing', () => {
     it('should accept properties exclusively for the rendered DOM node', () => {
       const Button = mnt('button')<ButtonProps>``;
-      const Text = mnt('label')``;
+      const Text = mnt(Button).params({ as: 'span' })``;
+
+      type ButtonPropsTest = React.ComponentPropsWithRef<typeof Button>;
+      type TextPropsTest = React.ComponentPropsWithRef<typeof Text>;
 
       //@ts-expect-error
       const button = <Button href='' />;
@@ -179,6 +182,29 @@ describe('mnt', () => {
       expect(buttonWithWrongVariant).toBeTruthy();
       expect(buttonWithVariant).toBeTruthy();
       expect(textAttrLabel).toBeTruthy();
+
+      type SupportAs = Expect<MatchesProperty<ButtonPropsTest, 'as'>>;
+      type SupportCustomProps = Expect<MatchesProperty<ButtonPropsTest, 'variant'>>;
+      type SupportRef = Expect<MatchesProperty<ButtonPropsTest, 'ref'>>;
+      type MatchesRef = Expect<Equal<ButtonPropsTest['ref'], React.Ref<HTMLButtonElement>>>;
+      type SupportExtendedRef = Expect<MatchesProperty<TextPropsTest, 'ref'>>;
+      type MatchesExtendedRef = Expect<Equal<TextPropsTest['ref'], React.Ref<HTMLSpanElement>>>;
+
+      // @ts-ignore
+      // eslint-disable-next-line no-unused-vars
+      type Assertions =
+        | SupportAs
+        | SupportCustomProps
+        | SupportRef
+        | MatchesRef
+        | SupportExtendedRef
+        | MatchesExtendedRef;
     });
   });
 });
+
+type Expect<T extends true> = T;
+type Equal<X, Y> =
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true : false;
+
+type MatchesProperty<Type, Key> = Key extends keyof Type ? true : false;
