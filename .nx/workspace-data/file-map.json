@@ -1,0 +1,231 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.2.0",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "tsconfig.json",
+        "hash": "2474768660890385619"
+      },
+      {
+        "file": "assets/mnt_logo.png",
+        "hash": "477941494257593147"
+      },
+      {
+        "file": "jest.config.js",
+        "hash": "14502865521293785534"
+      },
+      {
+        "file": ".github/CODEOWNERS",
+        "hash": "3144511996808025355"
+      },
+      {
+        "file": "changelog.config.js",
+        "hash": "8536525371110666713"
+      },
+      {
+        "file": "jest.config.base.js",
+        "hash": "8660564223099807058"
+      },
+      {
+        "file": "README.md",
+        "hash": "1364874828768299621"
+      },
+      {
+        "file": ".husky/pre-push",
+        "hash": "10423166493800145914"
+      },
+      {
+        "file": "CONTRIBUTING.md",
+        "hash": "5284943639656609929"
+      },
+      {
+        "file": ".browserlistrc",
+        "hash": "2015803873530205252"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "1343884790107746340"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "12056027318756854819"
+      },
+      {
+        "file": ".husky/.gitignore",
+        "hash": "10106645302852536800"
+      },
+      {
+        "file": "scripts/printHeader.js",
+        "hash": "11715700909503892147"
+      },
+      {
+        "file": "package.json",
+        "hash": "4126911519070172647"
+      },
+      {
+        "file": "assets/mnt_logo.svg",
+        "hash": "3489538199451837927"
+      },
+      {
+        "file": "commitlint.config.mjs",
+        "hash": "17976516637538882312"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "1532964369599189661"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "7747141565291071674"
+      },
+      {
+        "file": "assets/mnt_logo_wide.svg",
+        "hash": "10633957540002636331"
+      },
+      {
+        "file": ".github/PULL_REQUEST_TEMPLATE.md",
+        "hash": "9353877127332017163"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16830986415568699108"
+      },
+      {
+        "file": ".github/workflows/release.yml",
+        "hash": "964311372265931834"
+      },
+      {
+        "file": "nx.json",
+        "hash": "15794135228218973711"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "5898837267615177097"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "10711468594963254503"
+      },
+      {
+        "file": ".lintstagedrc.mjs",
+        "hash": "10885187368880281248"
+      },
+      {
+        "file": "tsconfig.settings.json",
+        "hash": "10139888204693014002"
+      },
+      {
+        "file": ".husky/commit-msg",
+        "hash": "1555746479389730571"
+      },
+      {
+        "file": "assets/mnt_logo_wide.png",
+        "hash": "9373708276142327210"
+      },
+      {
+        "file": ".prettierrc.json",
+        "hash": "10617776803013599130"
+      }
+    ],
+    "projectFileMap": {
+      "react-props-check": [
+        {
+          "file": "packages/react-props-check/CHANGELOG.md",
+          "hash": "1111051094539379003"
+        },
+        {
+          "file": "packages/react-props-check/README.md",
+          "hash": "4089022042667080928"
+        },
+        {
+          "file": "packages/react-props-check/eslint.config.mjs",
+          "hash": "14684645104690524601"
+        },
+        {
+          "file": "packages/react-props-check/jest.config.ts",
+          "hash": "18146842565712355824"
+        },
+        {
+          "file": "packages/react-props-check/package.json",
+          "hash": "7825538279329078583"
+        },
+        {
+          "file": "packages/react-props-check/src/index.test.ts",
+          "hash": "13770364877770525035"
+        },
+        {
+          "file": "packages/react-props-check/src/index.ts",
+          "hash": "137237995159654536"
+        },
+        {
+          "file": "packages/react-props-check/src/react_props.ts",
+          "hash": "17977108454428770020"
+        },
+        {
+          "file": "packages/react-props-check/tsconfig.json",
+          "hash": "17830714925930600927"
+        },
+        {
+          "file": "packages/react-props-check/tsconfig.types.json",
+          "hash": "6497946885821381721"
+        },
+        {
+          "file": "packages/react-props-check/vite.config.ts",
+          "hash": "16268310904409234043"
+        }
+      ],
+      "react-mnt": [
+        {
+          "file": "packages/react-mnt/CHANGELOG.md",
+          "hash": "14137517086090123570"
+        },
+        {
+          "file": "packages/react-mnt/README.md",
+          "hash": "3110051095890776327"
+        },
+        {
+          "file": "packages/react-mnt/eslint.config.mjs",
+          "hash": "14684645104690524601"
+        },
+        {
+          "file": "packages/react-mnt/jest.config.ts",
+          "hash": "17418530487652900767"
+        },
+        {
+          "file": "packages/react-mnt/package.json",
+          "hash": "7588493539798586722",
+          "deps": [
+            "react-props-check"
+          ]
+        },
+        {
+          "file": "packages/react-mnt/src/css.ts",
+          "hash": "9179539120651909059"
+        },
+        {
+          "file": "packages/react-mnt/src/index.test.tsx",
+          "hash": "3627405934985717321"
+        },
+        {
+          "file": "packages/react-mnt/src/index.tsx",
+          "hash": "6145264951359947101"
+        },
+        {
+          "file": "packages/react-mnt/tsconfig.json",
+          "hash": "17830714925930600927"
+        },
+        {
+          "file": "packages/react-mnt/tsconfig.types.json",
+          "hash": "6497946885821381721"
+        },
+        {
+          "file": "packages/react-mnt/vite.config.mts",
+          "hash": "10205091744813543321"
+        }
+      ]
+    }
+  }
+}
