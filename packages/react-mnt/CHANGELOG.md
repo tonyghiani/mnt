@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.8...react-mnt@1.1.9) (2024-12-06)
+
+**Note:** Version bump only for package react-mnt
+
 ## [1.1.8](https://github.com/tonyghiani/mnt/compare/react-mnt@1.1.7...react-mnt@1.1.8) (2024-01-24)
 
 ### Bug Fixes
