@@ -1,6 +1,6 @@
 import './css';
 
-import React, { ElementType, ForwardedRef } from 'react';
+import React, { ElementType, JSX } from 'react';
 import isValidProp, { type ReactAcceptedProp } from 'react-props-check';
 
 export interface MntProps<TAs = MntComponentType> {
@@ -35,7 +35,7 @@ export interface Mnt<TElement extends MntComponentType, TElementHtmlProps extend
   ): Mnt<
     _ResolvedElement,
     _ResolvedElement extends MntComponentType
-      ? Merge<React.ComponentPropsWithRef<_ResolvedElement>, Props>
+      ? Merge<React.ComponentProps<_ResolvedElement>, Props>
       : _MergedProps
   >;
 }
@@ -43,7 +43,7 @@ export interface Mnt<TElement extends MntComponentType, TElementHtmlProps extend
 export interface MntComponent<
   TElement extends MntComponentType = any,
   Props extends object = BaseObject
-> extends React.ForwardRefExoticComponent<React.PropsWithRef<Props> & MntProps> {
+> {
   <TAs extends MntComponentType>(_props: MntComponentProps<TAs, Props>): JSX.Element;
 
   _classesFactory: ClassesFactory<Props>;
@@ -70,9 +70,7 @@ export type MntComponentType = ElementType | MntComponent;
 export type MntComponentProps<
   TAs extends MntComponentType = MntComponentType,
   Props extends object = BaseObject,
-  TAsProps extends object = MntComponentType extends TAs
-    ? BaseObject
-    : React.ComponentPropsWithRef<TAs>
+  TAsProps extends object = MntComponentType extends TAs ? BaseObject : React.ComponentProps<TAs>
 > = Merge<Merge<Props, TAsProps>, MntProps<TAs>>;
 
 export type Merge<A extends object, B extends object> = Omit<A, keyof B> & B;
@@ -93,7 +91,7 @@ const isMnt = (arg: MntComponentType): arg is MntComponent => (arg as MntCompone
 const mnt = <
   TElement extends MntComponentType,
   TElementHtmlProps extends object = TElement extends MntComponentType
-    ? React.ComponentPropsWithRef<TElement>
+    ? React.ComponentProps<TElement>
     : BaseObject
 >(
   element: TElement,
@@ -133,7 +131,7 @@ const mnt = <
     return mnt<
       _ResolvedElement,
       _ResolvedElement extends MntComponentType
-        ? Merge<Merge<TElementHtmlProps, React.ComponentPropsWithRef<_ResolvedElement>>, Props>
+        ? Merge<Merge<TElementHtmlProps, React.ComponentProps<_ResolvedElement>>, Props>
         : _MergedProps
     >(element as unknown as _ResolvedElement, params);
   };
@@ -148,11 +146,10 @@ const componentTemplate = <TElement extends MntComponentType, Props extends obje
   classesFactory: ClassesFactory<Props>,
   paramsFactory: MntParamsFactory<Props>
 ) => {
-  function Component<TAs extends MntComponentType>(
-    componentProps: MntComponentProps<TAs, Props>,
-    ref: ForwardedRef<MntComponentType extends TAs ? TElement : TAs>
+  function MntComponent<TAs extends MntComponentType>(
+    componentProps: MntComponentProps<TAs, Props>
   ) {
-    const { as: As, className, ...props } = componentProps;
+    const { as: As, className, ref, ...props } = componentProps;
 
     const params = paramsFactory(componentProps as Props);
     const { as: paramsAs, ...paramsRest } = params;
@@ -174,10 +171,10 @@ const componentTemplate = <TElement extends MntComponentType, Props extends obje
   }
 
   if (hasStaticProperty(element, 'displayName')) {
-    Component.displayName = element.displayName || element.name;
+    MntComponent.displayName = element.displayName;
+  } else if (hasStaticProperty(element, 'name')) {
+    MntComponent.displayName = element.name;
   }
-
-  const MntComponent = React.forwardRef(Component) as MntComponent<TElement, Props>;
 
   MntComponent._classesFactory = classesFactory;
   MntComponent._paramsFactory = paramsFactory;
@@ -218,7 +215,10 @@ function cleanProps<Props extends object>(props: Props) {
   return cleanedProps;
 }
 
-function hasStaticProperty(input: unknown, propertyName: string): input is Function {
+function hasStaticProperty<TInput extends unknown, TProp extends PropertyKey>(
+  input: TInput,
+  propertyName: TProp
+): input is TInput & Record<TProp, unknown> {
   return isFunction(input) && propertyName in input;
 }
 
